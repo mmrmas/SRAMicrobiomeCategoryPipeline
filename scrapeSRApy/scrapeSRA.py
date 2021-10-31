@@ -1,3 +1,6 @@
+import modules.open_file as of
+
+
 # read in the file downloaded from the run archive, in this partcular case https://www.ncbi.nlm.nih.gov/Traces/study/?query_key=1&WebEnv=MCID_6178e8ee92f0234b8354c36f&o=acc_s%3Aa (may not be functional)
     # SraRunTable.txt
     # Contains Metadata for all samples
@@ -11,3 +14,15 @@
 # a basic frequency table is stored in the function "oTaxAnalysisData"
 # From this function we collect "name" and "percent"
 # This is stored as a file RunIdentifier.txt in the directory that carries the name of the category
+
+
+def main():
+    #open the SRARunTable and store all relevant information
+    downloadInfo = of.SRARunTable()
+
+
+
+
+#main
+if __name__ == '__main__':
+    main()
