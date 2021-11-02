@@ -1,0 +1,22 @@
+#Run the followong scripts in order
+
+#in directory scrapeSRApy
+  python scrapeSRA.py -i ../../../data/SraRunTable.txt
+
+#then move this dirctory to some cloud folder
+#mkdir <CLOUD DIR>/categories, in my case
+
+  mkdir ~/Dropbox/biodiversity/training/BootcampAI/05/data/categories
+  mv ~/Downloads/categories/* ~/Dropbox/biodiversity/training/BootcampAI/05/data/categories/
+  cd ~/Dropbox/biodiversity/training/BootcampAI/05/data/categories
+  ls
+
+#then we re-use a perl script to make the feature table
+#move to the scrapeSRApl directory and run, in my case
+
+  perl SRAFeatureTable.pl -i ../../../data/categories/ -o ../../../data/HMPFeatureTable.csv
+
+#then we move to the training part! We'll be using Google colab, the script can be found in the directory
+#scrapeSRAjp
+#the csv file we just created can be accessed by the following link:
+#https://www.dropbox.com/s/jgeae300bbjpzm5/HMPFeatureTable.csv?dl=1
