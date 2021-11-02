@@ -6,6 +6,7 @@ sub makeFeature_sub{
   my $file = shift(@_);
   my $hshRef = shift(@_);
   my $category = shift(@_);
+  my $affected = "No";
   open (F, $file) or die $!;
 
   #add category to the hash and check it's length
@@ -14,8 +15,21 @@ sub makeFeature_sub{
 
   while (my $line = <F>){
     chomp $line;
-    next if $line =~ /^\#/;
     next if $line =~ /^\s+$/;
+    if ($line =~ /^\#/){
+      if ($line =~ /\sYes\s/){
+        if ($line =~ /\sNormal\s/){
+          $affected = "Yes-Normal";
+        }
+        elsif ($line =~ /\sLesion\s/){
+          $affected = "Yes-Lesion";
+        }
+        else{
+          $affected = "Yes-Unknown";
+        }
+      } #affected by tumor, disease, lesion...
+      next;
+    }
     $line =~ s/\,\s+$//g;
     $line =~ s/[\{\}\}]//g;
     $line =~ s/\://g;
@@ -47,6 +61,9 @@ sub makeFeature_sub{
       }
     }
   }
+
+  #add the "affected" info
+  push (@ { $hshRef->{'affected'} }, $affected);
 
   #then fill the hash up to the longest array
   foreach my $key (keys %$hshRef){
