@@ -23,4 +23,4 @@
   #the csv file we just created can be accessed by the following link:
   #https://www.dropbox.com/s/jgeae300bbjpzm5/HMPFeatureTable.csv?dl=1
 
-  #the colab training notebook can be found under 
+  #the colab training notebook can be found under HMP_data_training.ipynb in the scrapeSRAjp folder
