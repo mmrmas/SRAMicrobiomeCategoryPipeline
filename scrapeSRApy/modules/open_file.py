@@ -56,7 +56,7 @@ def file_exists(f):
         print(f'The file {f} exists')
         return True
     else:
-        return False
+        return 1/0
 
 
 def storeWebSite(o, w):
